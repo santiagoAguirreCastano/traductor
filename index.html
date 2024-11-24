@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/dictionary.css">
+    <link rel="stylesheet" href="styles/formulario.css">
+
+
+    <title>Diccionario</title>
+</head>
+<body>
+    <main>
+       
+  <section id="SectionFather">
+    <h1>
+        Traductor
+    </h1>
+    
+        
+        <select name="" id="selectTraductor">
+            <option value="Español-Ingles" id="EI">Español-Ingles</option>
+            <option value="Ingles-Español" id="IE">Ingles-Español</option>
+        </select>
+        <section id="SectionTraductor">
+            <div id="FirstDiv">
+                
+                <input type="text" name="" id="tra2" placeholder="Ingrese la palabra a traducir">
+
+
+            </input>
+
+            </div>
+            <div id="SecondDiv">
+        
+
+            </div>
+
+          
+        </section>
+
+        <div id="buttons">
+            <button id="btn1">Agregar nueva palabra</button>
+            <button id="btn2">Traducir</button>
+        </div>
+        
+       
+        <button id="btn3">
+            Diccionario
+        </button>
+    </section>
+
+<div id="blur">
+    
+    <div id="dictionary">
+        <button id="imagenBorrar">X</button>
+        <h2>Bienvendio al Diccionario</h2>
+        <h3>Seleccione el idioma que desea ver</h3>
+    
+    
+      <form action="" id="form">
+       
+          <label for="">Español</label>  
+        <input type="radio" name="ola" id="radio" value="palabra">
+    
+        
+        <label for="">Ingles</label>  
+    
+            <input type="radio" name="ola"id="radio" value="traduccion">
+    
+       
+    
+      </form>
+
+      <form action="" id="categorias">
+       <h2>CATEGORIAS</h2> 
+
+        <label for="">Frutas</label>  
+      <input type="radio" name="ola" id="radio2" value="frutas">
+      
+      <label for="">Colores</label>  
+  
+          <input type="radio" name="ola"id="radio2" value="colores">
+          <label for="">Descripcion</label>  
+  
+          <input type="radio" name="ola"id="radio2" value="descripciones">
+
+
+          <label for="">Comidas</label>  
+  
+          <input type="radio" name="ola"id="radio2" value="comidas">
+
+          <label for="">Habilidades</label>  
+  
+          <input type="radio" name="ola"id="radio2" value="habilidades">
+  
+     
+  
+    </form>
+
+        <div id="dictionary2">
+            
+        </div>
+    </div>
+</div>
+   
+
+<div id="blur2">
+    
+    <div id="formulario">
+        <button id="imagenBorrar2">X</button>
+
+        <h2>Agrega una Palabra al Diccionario</h2>
+        <label for="">Palabra en Español</label>
+        <input type="text" id="inputEspañol">
+        <label for="">Palabra en Ingles</label>
+        <input type="text" id="inputIngles">
+        <label for="">Categoria</label>
+        <select name="" id="selectCategoriaFormulario">
+            <option value="frutas">Frutas</option>
+            <option value="comidas">Comida</option>
+            <option value="habilidades">Habilidades</option>
+            <option value="descripciones">Descripciones</option>
+            <option value="colores">Colores</option>
+
+        </select>
+        <button id="agregarPalabra">Agregar</button>
+    
+
+    </div>
+    <div id="confirmationMessage">Palabra agregada exitosamente al diccionario!</div>
+
+</div>
+
+
+
+
+    </main>
+
+<div></div>
+    <script type="module" src="scripts/app.js"></script>
+    <script type="module" src="scripts/array.js"></script>
+
+
+</body>
+</html>

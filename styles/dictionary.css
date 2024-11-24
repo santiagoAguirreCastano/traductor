@@ -1,0 +1,142 @@
+#dictionary {
+    background-color: #ffffff; /* Fondo blanco puro */
+    width: 35%;
+    height: 70%;
+    position: absolute;
+    left: 32.5%;
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    line-height: 1.8;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #d4a373; /* Detalle pergamino */
+    font-family: 'Times New Roman', Times, serif; 
+    color: #333;
+}
+
+#dictionary h2 {
+    margin: 0 0 15px 0;
+    font-size: 1.5em;
+    color: #774936; /* Texto relacionado al traductor */
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #d4a373; 
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+#dictionary p {
+    text-align: justify;
+    margin: 10px 0;
+}
+
+#dictionary::-webkit-scrollbar {
+    width: 10px;
+}
+
+#dictionary::-webkit-scrollbar-track {
+    background: #f8f8f8; /* Gris claro */
+    border-radius: 10px;
+}
+
+#dictionary::-webkit-scrollbar-thumb {
+    background: #d4a373; /* Detalle pergamino */
+    border-radius: 10px;
+    border: 2px solid #ffffff; /* Contraste blanco */
+}
+
+#imagenBorrar {
+    position: absolute;
+    right: 4%;
+    top: 1%;
+    height: 35px; 
+    width: 35px; 
+    font-size: 20px;
+    background-color: #ffffff;
+    color: #774936;
+    border: 2px solid #d4a373; /* Detalle pergamino */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#imagenBorrar:hover {
+    background-color: #d4a373;
+    color: white;
+}
+
+#form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    background-color: #f8f8f8; 
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d4a373; 
+    flex-wrap: wrap;
+}
+
+#form label {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+    color: #774936;
+    cursor: pointer;
+    margin: 0 5px;
+    text-align: center;
+}
+
+#form input[type="radio"] {
+    width: 1.2rem; /* Ajuste del ancho */
+    height: 1.2rem;
+    accent-color: #d4a373; /* Color pergamino */
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#categorias {
+    display: none;
+    width: 12rem; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 4%;
+    bottom: 1%;
+    border: 1px solid #d4a373; 
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f8f8f8; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Times New Roman', Times, serif;
+    color: #333;
+}
+#categorias input[type="radio"]{
+    width: 1.2rem; /* Ajuste del ancho */
+    height: 1.2rem;
+    accent-color: #d4a373; /* Color pergamino */
+    margin-left: 5px;
+    cursor: pointer;
+}
+#blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    display: none;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}

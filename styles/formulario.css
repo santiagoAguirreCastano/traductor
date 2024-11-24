@@ -1,0 +1,133 @@
+#blur2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    display: none;
+    justify-content: center;
+    align-items:center ;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+#formulario {
+    background-color: #ffffff; /* Fondo blanco */
+    width: 30%;
+    height: 55%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d4a373; /* Detalle pergamino */
+    font-family: 'Times New Roman', Times, serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+#formulario label {
+    font-size: 1em;
+    color: #774936;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+}
+#formulario h2{
+    margin: 0 0 15px 0;
+    font-size: 1.5em;
+    color: #774936; /* Texto relacionado al traductor */
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #d4a373; 
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+
+#formulario input[type="text"] {
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid #d4a373; /* Borde pergamino */
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #333;
+    outline: none;
+    background-color: #f8f8f8; /* Fondo gris claro */
+}
+
+#formulario input[type="text"]:focus {
+    border-color: #774936; /* Resaltado al enfocar */
+    box-shadow: 0 0 5px rgba(119, 73, 54, 0.5);
+}
+
+#selectCategoriaFormulario {
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid #d4a373; /* Borde pergamino */
+    border-radius: 5px;
+    background-color: #f8f8f8; /* Fondo gris claro */
+    color: #333;
+    padding-left: 10px;
+    font-size: 1em;
+    outline: none;
+    cursor: pointer;
+}
+
+#selectCategoriaFormulario:focus {
+    border-color: #774936; /* Resaltado al enfocar */
+    box-shadow: 0 0 5px rgba(119, 73, 54, 0.5);
+}
+#imagenBorrar2{
+    position: absolute;
+    top: 23%;
+    right: 35.5%;
+    height: 35px; 
+    width: 35px; 
+    font-size: 20px;
+    background-color: #ffffff;
+    color: #774936;
+    border: 2px solid #d4a373; /* Detalle pergamino */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#imagenBorrar2:hover {
+    background-color: #d4a373;
+    color: white;
+}
+
+#confirmationMessage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d4a373;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
