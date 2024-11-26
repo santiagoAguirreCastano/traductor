@@ -75,26 +75,30 @@
 
       <form action="" id="categorias">
         <button type="button" id="ordenar">Ordenar A-Z</button>
-       <h2>CATEGORIAS</h2> 
+            <h2>CATEGORIAS</h2> 
 
-        <label for="">Frutas</label>  
-      <input type="radio" name="ola" id="radio2" value="frutas">
+            <label for="">Frutas</label>  
+            <input type="radio" name="ola" id="radio2" value="fruits">
       
-      <label for="">Colores</label>  
+            <label for="">Colores</label>  
   
-          <input type="radio" name="ola"id="radio2" value="colores">
-          <label for="">Descripcion</label>  
+          <input type="radio" name="ola"id="radio2" value="colors">
+          <label for="">Descripciones Fisicas</label>  
   
-          <input type="radio" name="ola"id="radio2" value="descripciones">
+          <input type="radio" name="ola"id="radio2" value="physical_descriptions">
 
 
-          <label for="">Comidas</label>  
+          <label for="">Animales</label>  
   
-          <input type="radio" name="ola"id="radio2" value="comidas">
+          <input type="radio" name="ola"id="radio2" value="animals">
 
           <label for="">Habilidades</label>  
   
-          <input type="radio" name="ola"id="radio2" value="habilidades">
+          <input type="radio" name="ola"id="radio2" value="skills">
+
+          <label for="">Verbos</label>  
+
+          <input type="radio" name="ola"id="radio2" value="verbs">
   
      
   
@@ -117,13 +121,17 @@
         <input type="text" id="inputEspañol">
         <label for="">Palabra en Ingles</label>
         <input type="text" id="inputIngles">
+        <label for="">Escriba el ejemplo</label>
+        <input type="text" id="example">
         <label for="">Categoria</label>
         <select name="" id="selectCategoriaFormulario">
-            <option value="frutas">Frutas</option>
-            <option value="comidas">Comida</option>
-            <option value="habilidades">Habilidades</option>
-            <option value="descripciones">Descripciones</option>
-            <option value="colores">Colores</option>
+            <option value="fruits">Frutas</option>
+            <option value="animals">Animales</option>
+            <option value="skills">Habilidades</option>
+            <option value="physical_descriptions">Descripciones</option>
+            <option value="colors">Colores</option>
+            <option value="verbs">Verbos</option>
+
 
         </select>
         <button id="agregarPalabra">Agregar</button>
@@ -131,6 +139,8 @@
 
     </div>
     <div id="confirmationMessage">Palabra agregada exitosamente al diccionario!</div>
+    <div id="errorMessage">Llene todos los campos!</div>
+
 
 </div>
 

@@ -18,7 +18,12 @@
     font-family: 'Times New Roman', Times, serif; 
     color: #333;
 }
-
+#dictionary2{
+    width: 45%;
+    position: absolute;
+    right:4% ;
+    top: 32%;
+}
 #dictionary h2 {
     margin: 0 0 15px 0;
     font-size: 1.5em;
@@ -105,13 +110,10 @@
 
 #categorias {
     display: none;
-    width: 12rem; 
+    width: 15rem; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    left: 2%;
-    bottom: 6%;
     border: 1px solid #d4a373; 
     border-radius: 10px;
     padding: 10px;
@@ -119,6 +121,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Times New Roman', Times, serif;
     color: #333;
+    position: sticky;
+    right: 500px;
+    top: 1px;
+    z-index: 2;
+    
+    
+    
 }
 #categorias input[type="radio"]{
     width: 1.2rem; /* Ajuste del ancho */

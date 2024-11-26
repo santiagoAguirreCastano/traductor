@@ -1,4 +1,5 @@
-import { diccionario } from "./array.js";
+import { dictionary } from "./array.js";
+
 const addWords = document.getElementById('agregarPalabra');
 const btnTranslate = document.getElementById('btn2');
 const containerTranslate = document.getElementById('SecondDiv');
@@ -16,23 +17,22 @@ const inputAgregarEspañol = document.getElementById('inputEspañol');
 const inputAgregarIngles = document.getElementById('inputIngles');
 const selectAgregarPalabra = document.getElementById('selectCategoriaFormulario');
 const confirmationMessage = document.getElementById('confirmationMessage');
-const imagenBorrar2 = document.getElementById('imagenBorrar2');
+const errorMessage = document.getElementById('errorMessage');
+const example = document.getElementById('example');
 
-addWords.addEventListener('click', () => {
-    confirmationMessage.style.display = 'block';
-    setTimeout(() => {
-        confirmationMessage.style.display = 'none';
-    }, 2000);
-});
+
+const getAllWords = () => {
+    return Object.values(dictionary.categories).flat();
+};
 
 function ordenarLista() {
-    const elementosOrdenados = [...diccionario].sort((a, b) =>
-        a.palabra.localeCompare(b.palabra)
+    const elementosOrdenados = getAllWords().sort((a, b) =>
+        a.spanish.localeCompare(b.spanish)
     );
     containerDictionary2.innerHTML = '';
     elementosOrdenados.forEach(elemento => {
         const palabraElemento = document.createElement('h2');
-        palabraElemento.textContent = `${elemento.palabra} - ${elemento.traduccion}`;
+        palabraElemento.textContent = `${elemento.spanish} - ${elemento.english} - ${elemento.example}`;
         containerDictionary2.appendChild(palabraElemento);
     });
 }
@@ -40,31 +40,27 @@ function ordenarLista() {
 document.getElementById('ordenar').addEventListener('click', ordenarLista);
 
 const makeTranslate = () => {
-    diccionario.forEach(element => {
-        if (
-            inputTranslate.value.toLowerCase() == element.palabra ||
-            inputTranslate.value.toLowerCase() == element.traduccion
-        ) {
-            if (selectTraductor.value == "Español-Ingles") {
-                if (inputTranslate.value == element.palabra) {
-                    containerTranslate.innerHTML = element.traduccion;
-                } else {
-                    containerTranslate.innerHTML = "Escriba la palabra en el idioma indicado";
-                }
-            } else if (selectTraductor.value == "Ingles-Español") {
-                if (inputTranslate.value == element.traduccion) {
-                    containerTranslate.innerHTML = element.palabra;
-                } else {
-                    containerTranslate.innerHTML = "Escriba la palabra en el idioma indicado";
-                }
-            }
+    const allWords = getAllWords();
+    const inputValue = inputTranslate.value.toLowerCase();
+    let foundTranslation = false;
+
+    allWords.forEach(element => {
+        if (inputValue === element.spanish.toLowerCase() && selectTraductor.value === "Español-Ingles") {
+            containerTranslate.innerHTML = element.english;
+            foundTranslation = true;
+        } else if (inputValue === element.english.toLowerCase() && selectTraductor.value === "Ingles-Español") {
+            containerTranslate.innerHTML = element.spanish;
+            foundTranslation = true;
         }
     });
-};
 
+    if (!foundTranslation) {
+        containerTranslate.innerHTML = "Escriba la palabra en el idioma indicado";
+    }
+};
 const showWords = () => {
     containerDictionary2.innerHTML = '';
-    diccionario.forEach(element => {
+    getAllWords().forEach(element => {
         revision(element);
     });
 };
@@ -75,14 +71,14 @@ let filterTwo = document.querySelectorAll('#radio2');
 const makeWordSpanish = (element) => {
     const wordSpanish = document.createElement('h2');
     wordSpanish.id = "palabra2";
-    wordSpanish.textContent = element.palabra;
+    wordSpanish.textContent = element.spanish;
     containerDictionary2.appendChild(wordSpanish);
 };
 
 const makeWordEnglish = (element) => {
     const wordEnglish = document.createElement('h2');
     wordEnglish.id = "palabra2";
-    wordEnglish.textContent = element.traduccion;
+    wordEnglish.textContent = element.english;
     containerDictionary2.appendChild(wordEnglish);
 };
 
@@ -103,25 +99,30 @@ filterOne.forEach(radio => {
     radio.addEventListener('change', showWords);
 });
 
+
+
 const filterCategoria = () => {
     containerDictionary2.innerHTML = '';
     const selectedCategory = [...filterTwo].find(element => element.checked)?.value;
     const selectedLanguage = [...filterOne].find(element => element.checked)?.value;
 
     if (selectedCategory && selectedLanguage) {
-        const filteredWords = diccionario.filter(item => item.categoria === selectedCategory);
-        if (filteredWords.length > 0) {
+        const filteredWords = dictionary.categories[selectedCategory];
+        if (filteredWords && filteredWords.length > 0) {
             if (selectedLanguage === "palabra") {
                 filteredWords.forEach(makeWordSpanish);
             } else if (selectedLanguage === "traduccion") {
                 filteredWords.forEach(makeWordEnglish);
             }
+        } else {
+            containerDictionary2.innerHTML = "No hay palabras en esta categoría.";
         }
     }
 };
 
 filterTwo.forEach(radio => {
     radio.addEventListener('change', filterCategoria);
+
 });
 
 const displayNoneDictionary = () => {
@@ -152,16 +153,37 @@ const styleFormulario = () => {
     }, 10);
 };
 
-let idWord = 25;
-
-const eventAddWord = () => {
-    idWord = idWord + 1;
-    setData({ id: idWord, palabra: inputAgregarEspañol.value, traduccion: inputAgregarIngles.value, categoria: selectAgregarPalabra.value });
+const getNextId = (category) => {
+    const wordsInCategory = dictionary.categories[category];
+    const lastWord = wordsInCategory[wordsInCategory.length - 1];
+    return lastWord ? lastWord.id + 1 : 1;
 };
 
-const setData = (info) => {
-    diccionario.push(info);
-    console.log(diccionario);
+const eventAddWord = () => {
+    if (inputAgregarEspañol.value.trim() === '' || inputAgregarIngles.value.trim() === '') {
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 2000);
+    } else {
+        confirmationMessage.style.display = 'block';
+        setTimeout(() => {
+            confirmationMessage.style.display = 'none';
+        }, 2000);
+        
+        const selectedCategory = selectAgregarPalabra.value;
+        const newId = getNextId(selectedCategory);
+        
+        const newWord = {
+            id: newId,
+            english: inputAgregarIngles.value,
+            spanish: inputAgregarEspañol.value,
+            example: example.value, 
+        };
+
+        dictionary.categories[selectedCategory].push(newWord);
+        console.log(dictionary);
+    }
 };
 
 imagenCerrar.addEventListener('click', displayNoneDictionary);
